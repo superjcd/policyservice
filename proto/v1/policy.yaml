@@ -1,0 +1,15 @@
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    - selector: proto.v1.PolicyService.CreatePolicy
+      post: /v1/policies
+    - selector: proto.v1.PolicyService.ListPolicy
+      get: /v1/policies
+    - selector: proto.v1.PolicyService.DeletePolicy
+      delete: /v1/policies   
+    - selector: proto.v1.PolicyService.AddGroup
+      post: /v1/policies/group
+    - selector: proto.v1.PolicyService.FilterAllowed
+      post: /v1/policies/objs/filterted
