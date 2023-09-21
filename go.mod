@@ -1,4 +1,4 @@
-module github.com/HooYa-Bigdata/policyservice
+module github.com/superjcd/policyservice
 
 go 1.20
 

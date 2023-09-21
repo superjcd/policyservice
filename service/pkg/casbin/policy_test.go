@@ -5,10 +5,10 @@ import (
 	"os"
 	"testing"
 
-	v1 "github.com/HooYa-Bigdata/policyservice/genproto/v1"
 	"github.com/glebarez/sqlite"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
+	v1 "github.com/superjcd/policyservice/genproto/v1"
 	"gorm.io/gorm"
 )
 

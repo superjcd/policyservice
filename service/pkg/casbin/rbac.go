@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"sync"
 
-	v1 "github.com/HooYa-Bigdata/policyservice/genproto/v1"
 	casbin "github.com/casbin/casbin/v2"
 	"github.com/casbin/casbin/v2/model"
 	gormadapter "github.com/casbin/gorm-adapter/v3"
+	v1 "github.com/superjcd/policyservice/genproto/v1"
 	"gorm.io/gorm"
 )
 

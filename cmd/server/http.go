@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/HooYa-Bigdata/policyservice/config"
-	v1 "github.com/HooYa-Bigdata/policyservice/genproto/v1/gw"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+	"github.com/superjcd/policyservice/config"
+	v1 "github.com/superjcd/policyservice/genproto/v1/gw"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

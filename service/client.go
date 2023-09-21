@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/HooYa-Bigdata/policyservice/config"
-	v1 "github.com/HooYa-Bigdata/policyservice/genproto/v1"
+	"github.com/superjcd/policyservice/config"
+	v1 "github.com/superjcd/policyservice/genproto/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

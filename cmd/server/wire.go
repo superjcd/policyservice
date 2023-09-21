@@ -4,10 +4,10 @@
 package server
 
 import (
-	"github.com/HooYa-Bigdata/policyservice/config"
-	v1 "github.com/HooYa-Bigdata/policyservice/genproto/v1"
-	"github.com/HooYa-Bigdata/policyservice/service"
 	"github.com/google/wire"
+	"github.com/superjcd/policyservice/config"
+	v1 "github.com/superjcd/policyservice/genproto/v1"
+	"github.com/superjcd/policyservice/service"
 )
 
 // InitServer Inject service's component

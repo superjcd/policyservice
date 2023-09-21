@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 
-	"github.com/HooYa-Bigdata/policyservice/cmd/server"
+	"github.com/superjcd/policyservice/cmd/server"
 )
 
 var cfg = flag.String("config", "config/config.yaml", "config file location")

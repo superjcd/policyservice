@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 
-	"github.com/HooYa-Bigdata/policyservice/config"
-	v1 "github.com/HooYa-Bigdata/policyservice/genproto/v1"
-	"github.com/HooYa-Bigdata/policyservice/pkg/database"
-	policy "github.com/HooYa-Bigdata/policyservice/service/pkg/casbin"
+	"github.com/superjcd/policyservice/config"
+	v1 "github.com/superjcd/policyservice/genproto/v1"
+	"github.com/superjcd/policyservice/pkg/database"
+	policy "github.com/superjcd/policyservice/service/pkg/casbin"
 	"gorm.io/gorm"
 )
 

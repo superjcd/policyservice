@@ -3,7 +3,7 @@ package policy
 import (
 	"context"
 
-	v1 "github.com/HooYa-Bigdata/policyservice/genproto/v1"
+	v1 "github.com/superjcd/policyservice/genproto/v1"
 )
 
 type Policy interface {
