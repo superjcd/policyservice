@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	PolicyService_CreatePolicy_FullMethodName  = "/proto.v1.PolicyService/CreatePolicy"
-	PolicyService_ListPolicy_FullMethodName    = "/proto.v1.PolicyService/ListPolicy"
-	PolicyService_DeletePolicy_FullMethodName  = "/proto.v1.PolicyService/DeletePolicy"
-	PolicyService_AddGroup_FullMethodName      = "/proto.v1.PolicyService/AddGroup"
-	PolicyService_FilterAllowed_FullMethodName = "/proto.v1.PolicyService/FilterAllowed"
+	PolicyService_CreatePolicy_FullMethodName  = "/superjcd.policyservice.v1.PolicyService/CreatePolicy"
+	PolicyService_ListPolicy_FullMethodName    = "/superjcd.policyservice.v1.PolicyService/ListPolicy"
+	PolicyService_DeletePolicy_FullMethodName  = "/superjcd.policyservice.v1.PolicyService/DeletePolicy"
+	PolicyService_AddGroup_FullMethodName      = "/superjcd.policyservice.v1.PolicyService/AddGroup"
+	PolicyService_FilterAllowed_FullMethodName = "/superjcd.policyservice.v1.PolicyService/FilterAllowed"
 )
 
 // PolicyServiceClient is the client API for PolicyService service.
@@ -228,7 +228,7 @@ func _PolicyService_FilterAllowed_Handler(srv interface{}, ctx context.Context, 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var PolicyService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "proto.v1.PolicyService",
+	ServiceName: "superjcd.policyservice.v1.PolicyService",
 	HandlerType: (*PolicyServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

@@ -13,9 +13,9 @@ import (
 	"io"
 	"net/http"
 
-	extV1 "github.com/superjcd/policyservice/genproto/v1"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
+	extV1 "github.com/superjcd/policyservice/genproto/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
@@ -208,7 +208,7 @@ func RegisterPolicyServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.v1.PolicyService/CreatePolicy", runtime.WithHTTPPathPattern("/v1/policies"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/CreatePolicy", runtime.WithHTTPPathPattern("/v1/policies"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -233,7 +233,7 @@ func RegisterPolicyServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.v1.PolicyService/ListPolicy", runtime.WithHTTPPathPattern("/v1/policies"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/ListPolicy", runtime.WithHTTPPathPattern("/v1/policies"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -258,7 +258,7 @@ func RegisterPolicyServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.v1.PolicyService/DeletePolicy", runtime.WithHTTPPathPattern("/v1/policies"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/DeletePolicy", runtime.WithHTTPPathPattern("/v1/policies"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -283,7 +283,7 @@ func RegisterPolicyServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.v1.PolicyService/AddGroup", runtime.WithHTTPPathPattern("/v1/policies/group"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/AddGroup", runtime.WithHTTPPathPattern("/v1/policies/group"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -308,7 +308,7 @@ func RegisterPolicyServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.v1.PolicyService/FilterAllowed", runtime.WithHTTPPathPattern("/v1/policies/objs/filterted"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/FilterAllowed", runtime.WithHTTPPathPattern("/v1/policies/objs/filterted"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -372,7 +372,7 @@ func RegisterPolicyServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/proto.v1.PolicyService/CreatePolicy", runtime.WithHTTPPathPattern("/v1/policies"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/CreatePolicy", runtime.WithHTTPPathPattern("/v1/policies"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -394,7 +394,7 @@ func RegisterPolicyServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/proto.v1.PolicyService/ListPolicy", runtime.WithHTTPPathPattern("/v1/policies"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/ListPolicy", runtime.WithHTTPPathPattern("/v1/policies"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -416,7 +416,7 @@ func RegisterPolicyServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/proto.v1.PolicyService/DeletePolicy", runtime.WithHTTPPathPattern("/v1/policies"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/DeletePolicy", runtime.WithHTTPPathPattern("/v1/policies"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -438,7 +438,7 @@ func RegisterPolicyServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/proto.v1.PolicyService/AddGroup", runtime.WithHTTPPathPattern("/v1/policies/group"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/AddGroup", runtime.WithHTTPPathPattern("/v1/policies/group"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -460,7 +460,7 @@ func RegisterPolicyServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/proto.v1.PolicyService/FilterAllowed", runtime.WithHTTPPathPattern("/v1/policies/objs/filterted"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/superjcd.policyservice.v1.PolicyService/FilterAllowed", runtime.WithHTTPPathPattern("/v1/policies/objs/filterted"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

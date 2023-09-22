@@ -3,13 +3,13 @@ config_version: 3
 
 http:
   rules:
-    - selector: proto.v1.PolicyService.CreatePolicy
+    - selector: superjcd.policyservice.v1.PolicyService.CreatePolicy
       post: /v1/policies
-    - selector: proto.v1.PolicyService.ListPolicy
+    - selector: superjcd.policyservice.v1.PolicyService.ListPolicy
       get: /v1/policies
-    - selector: proto.v1.PolicyService.DeletePolicy
+    - selector: superjcd.policyservice.v1.PolicyService.DeletePolicy
       delete: /v1/policies   
-    - selector: proto.v1.PolicyService.AddGroup
+    - selector: superjcd.policyservice.v1.PolicyService.AddGroup
       post: /v1/policies/group
-    - selector: proto.v1.PolicyService.FilterAllowed
+    - selector: superjcd.policyservice.v1.PolicyService.FilterAllowed
       post: /v1/policies/objs/filterted
