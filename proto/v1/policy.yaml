@@ -9,7 +9,7 @@ http:
       get: /v1/policies
     - selector: superjcd.policyservice.v1.PolicyService.DeletePolicy
       delete: /v1/policies   
-    - selector: superjcd.policyservice.v1.PolicyService.AddGroup
+    - selector: superjcd.policyservice.v1.PolicyService.AddSubGroup
       post: /v1/policies/group
     - selector: superjcd.policyservice.v1.PolicyService.FilterAllowed
       post: /v1/policies/objs/filterted

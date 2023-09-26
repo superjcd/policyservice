@@ -11,7 +11,8 @@ service PolicyService {
     rpc CreatePolicy(CreatePolicyRequest) returns (CreatePolicyResponse);
     rpc ListPolicy(ListPolicyRequest) returns (ListPolicyResponse);
     rpc DeletePolicy(DeletePolicyRequest) returns (DeletePolicyResponse);
-    rpc AddGroup(AddGroupRequest) returns (AddGroupResponse);
+    rpc AddSubGroup(AddSubGroupRequest) returns (AddSubGroupResponse);
+    rpc AddObjGroup(AddObjGroupRequest) returns (AddObjGroupResponse);
     rpc FilterAllowed(FilterAllowedRequest) returns (FilterAllowedResponse);
 }
 
@@ -22,17 +23,15 @@ enum Status {
 }
 
 message Policy {
-    string user = 1;
-    string domain =2;
-    string obj=3;
-    string act=4;
+    string sub = 1;
+    string obj=2;
+    string act=3;
 }
 
 message CreatePolicyRequest {
-    string user = 1;
-    string domain =2;
-    string obj=3;
-    string act=4;
+    string sub = 1;
+    string obj=2;
+    string act=3;
 }
 
 message CreatePolicyResponse {
@@ -50,10 +49,9 @@ message ListPolicyResponse {
 }
 
 message DeletePolicyRequest {
-    string user = 1;
-    string domain =2;
-    string obj=3;
-    string act=4;
+    string sub = 1;
+    string obj=2;
+    string act=3;
 }    
 
 message DeletePolicyResponse {
@@ -61,22 +59,30 @@ message DeletePolicyResponse {
     Status status=2;    
 }
 
-message AddGroupRequest {
-    string user=1;
+message AddSubGroupRequest {
+    string sub=1;
     string group=2;
-    string domain=3;
 }
 
-message AddGroupResponse {
+message AddSubGroupResponse {
+    string msg=1;
+    Status status=2;
+}
+
+message AddObjGroupRequest {
+    string obj=1;
+    string group=2;
+}
+
+message AddObjGroupResponse {
     string msg=1;
     Status status=2;
 }
 
 message FilterAllowedRequest {
     repeated string resource_list=1;
-    string user=2;
-    string domain=3;
-    string act=4;
+    string sub=2;
+    string act=3;
 }
 
 message FilterAllowedResponse {

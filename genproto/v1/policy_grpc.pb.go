@@ -22,7 +22,8 @@ const (
 	PolicyService_CreatePolicy_FullMethodName  = "/superjcd.policyservice.v1.PolicyService/CreatePolicy"
 	PolicyService_ListPolicy_FullMethodName    = "/superjcd.policyservice.v1.PolicyService/ListPolicy"
 	PolicyService_DeletePolicy_FullMethodName  = "/superjcd.policyservice.v1.PolicyService/DeletePolicy"
-	PolicyService_AddGroup_FullMethodName      = "/superjcd.policyservice.v1.PolicyService/AddGroup"
+	PolicyService_AddSubGroup_FullMethodName   = "/superjcd.policyservice.v1.PolicyService/AddSubGroup"
+	PolicyService_AddObjGroup_FullMethodName   = "/superjcd.policyservice.v1.PolicyService/AddObjGroup"
 	PolicyService_FilterAllowed_FullMethodName = "/superjcd.policyservice.v1.PolicyService/FilterAllowed"
 )
 
@@ -33,7 +34,8 @@ type PolicyServiceClient interface {
 	CreatePolicy(ctx context.Context, in *CreatePolicyRequest, opts ...grpc.CallOption) (*CreatePolicyResponse, error)
 	ListPolicy(ctx context.Context, in *ListPolicyRequest, opts ...grpc.CallOption) (*ListPolicyResponse, error)
 	DeletePolicy(ctx context.Context, in *DeletePolicyRequest, opts ...grpc.CallOption) (*DeletePolicyResponse, error)
-	AddGroup(ctx context.Context, in *AddGroupRequest, opts ...grpc.CallOption) (*AddGroupResponse, error)
+	AddSubGroup(ctx context.Context, in *AddSubGroupRequest, opts ...grpc.CallOption) (*AddSubGroupResponse, error)
+	AddObjGroup(ctx context.Context, in *AddObjGroupRequest, opts ...grpc.CallOption) (*AddObjGroupResponse, error)
 	FilterAllowed(ctx context.Context, in *FilterAllowedRequest, opts ...grpc.CallOption) (*FilterAllowedResponse, error)
 }
 
@@ -72,9 +74,18 @@ func (c *policyServiceClient) DeletePolicy(ctx context.Context, in *DeletePolicy
 	return out, nil
 }
 
-func (c *policyServiceClient) AddGroup(ctx context.Context, in *AddGroupRequest, opts ...grpc.CallOption) (*AddGroupResponse, error) {
-	out := new(AddGroupResponse)
-	err := c.cc.Invoke(ctx, PolicyService_AddGroup_FullMethodName, in, out, opts...)
+func (c *policyServiceClient) AddSubGroup(ctx context.Context, in *AddSubGroupRequest, opts ...grpc.CallOption) (*AddSubGroupResponse, error) {
+	out := new(AddSubGroupResponse)
+	err := c.cc.Invoke(ctx, PolicyService_AddSubGroup_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *policyServiceClient) AddObjGroup(ctx context.Context, in *AddObjGroupRequest, opts ...grpc.CallOption) (*AddObjGroupResponse, error) {
+	out := new(AddObjGroupResponse)
+	err := c.cc.Invoke(ctx, PolicyService_AddObjGroup_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +108,8 @@ type PolicyServiceServer interface {
 	CreatePolicy(context.Context, *CreatePolicyRequest) (*CreatePolicyResponse, error)
 	ListPolicy(context.Context, *ListPolicyRequest) (*ListPolicyResponse, error)
 	DeletePolicy(context.Context, *DeletePolicyRequest) (*DeletePolicyResponse, error)
-	AddGroup(context.Context, *AddGroupRequest) (*AddGroupResponse, error)
+	AddSubGroup(context.Context, *AddSubGroupRequest) (*AddSubGroupResponse, error)
+	AddObjGroup(context.Context, *AddObjGroupRequest) (*AddObjGroupResponse, error)
 	FilterAllowed(context.Context, *FilterAllowedRequest) (*FilterAllowedResponse, error)
 	mustEmbedUnimplementedPolicyServiceServer()
 }
@@ -115,8 +127,11 @@ func (UnimplementedPolicyServiceServer) ListPolicy(context.Context, *ListPolicyR
 func (UnimplementedPolicyServiceServer) DeletePolicy(context.Context, *DeletePolicyRequest) (*DeletePolicyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePolicy not implemented")
 }
-func (UnimplementedPolicyServiceServer) AddGroup(context.Context, *AddGroupRequest) (*AddGroupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddGroup not implemented")
+func (UnimplementedPolicyServiceServer) AddSubGroup(context.Context, *AddSubGroupRequest) (*AddSubGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddSubGroup not implemented")
+}
+func (UnimplementedPolicyServiceServer) AddObjGroup(context.Context, *AddObjGroupRequest) (*AddObjGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddObjGroup not implemented")
 }
 func (UnimplementedPolicyServiceServer) FilterAllowed(context.Context, *FilterAllowedRequest) (*FilterAllowedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FilterAllowed not implemented")
@@ -188,20 +203,38 @@ func _PolicyService_DeletePolicy_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PolicyService_AddGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddGroupRequest)
+func _PolicyService_AddSubGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddSubGroupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PolicyServiceServer).AddGroup(ctx, in)
+		return srv.(PolicyServiceServer).AddSubGroup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PolicyService_AddGroup_FullMethodName,
+		FullMethod: PolicyService_AddSubGroup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PolicyServiceServer).AddGroup(ctx, req.(*AddGroupRequest))
+		return srv.(PolicyServiceServer).AddSubGroup(ctx, req.(*AddSubGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PolicyService_AddObjGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddObjGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PolicyServiceServer).AddObjGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PolicyService_AddObjGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PolicyServiceServer).AddObjGroup(ctx, req.(*AddObjGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -244,8 +277,12 @@ var PolicyService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PolicyService_DeletePolicy_Handler,
 		},
 		{
-			MethodName: "AddGroup",
-			Handler:    _PolicyService_AddGroup_Handler,
+			MethodName: "AddSubGroup",
+			Handler:    _PolicyService_AddSubGroup_Handler,
+		},
+		{
+			MethodName: "AddObjGroup",
+			Handler:    _PolicyService_AddObjGroup_Handler,
 		},
 		{
 			MethodName: "FilterAllowed",

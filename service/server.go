@@ -65,12 +65,20 @@ func (s *Server) DeletePolicy(ctx context.Context, rq *v1.DeletePolicyRequest) (
 	return &v1.DeletePolicyResponse{Msg: "Delet policy successed", Status: v1.Status_success}, nil
 }
 
-func (s *Server) AddGroup(ctx context.Context, rq *v1.AddGroupRequest) (*v1.AddGroupResponse, error) {
-	if err := s.policy.Rbac().AddGroup(ctx, rq); err != nil {
-		return &v1.AddGroupResponse{Msg: "Add group failed", Status: v1.Status_failure}, err
+func (s *Server) AddSubGroup(ctx context.Context, rq *v1.AddSubGroupRequest) (*v1.AddSubGroupResponse, error) {
+	if err := s.policy.Rbac().AddSubGroup(ctx, rq); err != nil {
+		return &v1.AddSubGroupResponse{Msg: "Add group failed", Status: v1.Status_failure}, err
 	}
 
-	return &v1.AddGroupResponse{Msg: "Add group successed", Status: v1.Status_success}, nil
+	return &v1.AddSubGroupResponse{Msg: "Add group successed", Status: v1.Status_success}, nil
+}
+
+func (s *Server) AddObjGroup(ctx context.Context, rq *v1.AddObjGroupRequest) (*v1.AddObjGroupResponse, error) {
+	if err := s.policy.Rbac().AddObjGroup(ctx, rq); err != nil {
+		return &v1.AddObjGroupResponse{Msg: "Add group failed", Status: v1.Status_failure}, err
+	}
+
+	return &v1.AddObjGroupResponse{Msg: "Add group successed", Status: v1.Status_success}, nil
 }
 
 func (s *Server) FilterAllowed(ctx context.Context, rq *v1.FilterAllowedRequest) (*v1.FilterAllowedResponse, error) {

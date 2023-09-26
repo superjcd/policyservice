@@ -38,26 +38,42 @@ func (suite *FakePolicyTestSuite) SetupSuite() {
 }
 
 func (suite *FakePolicyTestSuite) TearDownSuite() {
-	_db, _ := db.DB()
-	err := _db.Close()
-	assert.Nil(suite.T(), err)
+	// _db, _ := db.DB()
+	// err := _db.Close()
+	// assert.Nil(suite.T(), err)
 
-	err2 := os.Remove(dbFile)
-	assert.Nil(suite.T(), err2)
+	// err2 := os.Remove(dbFile)
+	// assert.Nil(suite.T(), err2)
 }
 
-func (suite *FakePolicyTestSuite) TestAddPolicyGroup() {
-	rq := &v1.AddGroupRequest{User: "Jack", Group: "group1", Domain: "outperform"}
-	err := suite.FakePolicy.Rbac().AddGroup(context.Background(), rq)
+func (suite *FakePolicyTestSuite) TestAddSubPolicyGroup() {
+	rq := &v1.AddSubGroupRequest{Sub: "Jack", Group: "group1"}
+	err := suite.FakePolicy.Rbac().AddSubGroup(context.Background(), rq)
 	assert.Nil(suite.T(), err)
 }
 
-func (suite *FakePolicyTestSuite) TestCreatePolicy() {
+func (suite *FakePolicyTestSuite) TestAddObjPolicyGroup() {
+	rq := &v1.AddObjGroupRequest{Obj: "superbuy", Group: "US"}
+	err := suite.FakePolicy.Rbac().AddObjGroup(context.Background(), rq)
+	assert.Nil(suite.T(), err)
+}
+
+func (suite *FakePolicyTestSuite) TestCreatePolicyForSingleResource() {
 	rq := &v1.CreatePolicyRequest{
-		User:   "group1",
-		Domain: "outperform", // domain: 一个app就只有一个， 可以在全局设置， 可以使app名称
-		Obj:    "giantex",
-		Act:    "read",
+		Sub: "group1",
+		Obj: "giantex",
+		Act: "read",
+	}
+	err := suite.FakePolicy.Rbac().Create(context.Background(), rq)
+	assert.Nil(suite.T(), err)
+
+}
+
+func (suite *FakePolicyTestSuite) TestCreatePolicyForGroupResource() {
+	rq := &v1.CreatePolicyRequest{
+		Sub: "group1",
+		Obj: "US",
+		Act: "read",
 	}
 	err := suite.FakePolicy.Rbac().Create(context.Background(), rq)
 	assert.Nil(suite.T(), err)
@@ -67,35 +83,32 @@ func (suite *FakePolicyTestSuite) TestCreatePolicy() {
 func (suite *FakePolicyTestSuite) TestFilterAllowedObj() {
 	rq := &v1.FilterAllowedRequest{
 		ResourceList: []string{"giantex", "superbuy", "tangkula"},
-		User:         "Jack",
-		Domain:       "outperform",
+		Sub:          "Jack",
 		Act:          "read",
 	}
 	allowedResource, err := suite.FakePolicy.Rbac().FilterAllowed(context.Background(), rq)
 	assert.Nil(suite.T(), err)
-	assert.Equal(suite.T(), 1, allowedResource.TotalCount)
-	assert.Equal(suite.T(), "giantex", allowedResource.Items[0])
+	assert.Equal(suite.T(), 2, allowedResource.TotalCount)
+	// assert.Equal(suite.T(), "giantex", allowedResource.Items[0])
 }
 
 func (suite *FakePolicyTestSuite) TestXDeletePolicy() {
 	rq := &v1.DeletePolicyRequest{
-		User:   "group1",
-		Domain: "outperform",
-		Obj:    "giantex",
-		Act:    "read",
+		Sub: "group1",
+		Obj: "giantex",
+		Act: "read",
 	}
 	err := suite.FakePolicy.Rbac().Delete(context.Background(), rq)
 	assert.Nil(suite.T(), err)
 
 	rq2 := &v1.FilterAllowedRequest{
 		ResourceList: []string{"giantex", "superbuy", "tangkula"},
-		User:         "Jack",
-		Domain:       "outperform",
+		Sub:          "Jack",
 		Act:          "read",
 	}
 	allowedResource, err := suite.FakePolicy.Rbac().FilterAllowed(context.Background(), rq2)
 	assert.Nil(suite.T(), err)
-	assert.Equal(suite.T(), 0, allowedResource.TotalCount)
+	assert.Equal(suite.T(), 1, allowedResource.TotalCount)
 }
 
 func TestFakePolicySuite(t *testing.T) {

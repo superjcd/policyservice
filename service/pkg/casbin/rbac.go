@@ -25,10 +25,9 @@ type rbacpolicy struct {
 }
 
 type RbacPolicyItem struct {
-	User   string
-	Domain string
-	Obj    string
-	Act    string
+	Sub string
+	Obj string
+	Act string
 }
 
 type RbacPolicyList struct {
@@ -41,10 +40,9 @@ func (rpl *RbacPolicyList) ConvertToListPolicyResponse(msg string, status v1.Sta
 
 	for _, item := range rpl.Items {
 		policies = append(policies, &v1.Policy{
-			User:   item.User,
-			Domain: item.Domain,
-			Obj:    item.Obj,
-			Act:    item.Act,
+			Sub: item.Sub,
+			Obj: item.Obj,
+			Act: item.Act,
 		})
 	}
 
@@ -73,19 +71,20 @@ var (
 	once        sync.Once
 	rbac_model  = `
 	[request_definition]
-	r = sub, dom, obj, act
+	r = sub, obj, act
 	
 	[policy_definition]
-	p = sub, dom, obj, act
+	p = sub, obj, act
 	
 	[role_definition]
-	g = _, _, _
+	g = _, _
+	g2 = _, _
 	
 	[policy_effect]
 	e = some(where (p.eft == allow))
 	
 	[matchers]
-	m = g(r.sub, p.sub, r.dom) && r.dom == p.dom && r.obj == p.obj && r.act == p.act || r.sub=="%s"
+	m = g(r.sub, p.sub) && g2(r.obj, p.obj) && r.act == p.act || r.sub=="%s"
 	`
 ) // 注意， superadmin会拥有所有权限
 
@@ -112,11 +111,11 @@ func NewRbacPolicy(db *gorm.DB, superadmin string) (Policy, error) {
 }
 
 func (rp *rbacpolicy) Create(ctx context.Context, rq *v1.CreatePolicyRequest) error {
-	if hasPolicy := rp.enforcer.HasPolicy(rq.User, rq.Domain, rq.Obj, rq.Act); hasPolicy {
-		return fmt.Errorf("Policy已经存在")
+	if hasPolicy := rp.enforcer.HasPolicy(rq.Sub, rq.Obj, rq.Act); hasPolicy {
+		return fmt.Errorf("policy alread exists")
 	}
-	if ok, err := rp.enforcer.AddPolicy(rq.User, rq.Domain, rq.Obj, rq.Act); !ok {
-		return fmt.Errorf("policy创建失败, 失败原因: %s", err.Error())
+	if ok, err := rp.enforcer.AddPolicy(rq.Sub, rq.Obj, rq.Act); !ok {
+		return fmt.Errorf("failed to create policy create, details: %s", err.Error())
 	} else {
 		return nil
 	}
@@ -131,10 +130,9 @@ func (rp *rbacpolicy) List(ctx context.Context, rq *v1.ListPolicyRequest) (*Rbac
 
 	for _, pol := range policies {
 		item := RbacPolicyItem{
-			User:   pol[0],
-			Domain: pol[1],
-			Obj:    pol[2],
-			Act:    pol[3],
+			Sub: pol[0],
+			Obj: pol[2],
+			Act: pol[3],
 		}
 
 		items = append(items, &item)
@@ -146,36 +144,45 @@ func (rp *rbacpolicy) List(ctx context.Context, rq *v1.ListPolicyRequest) (*Rbac
 }
 
 func (rp *rbacpolicy) Delete(ctx context.Context, rq *v1.DeletePolicyRequest) error {
-	if hasPolicy := rp.enforcer.HasPolicy(rq.User, rq.Domain, rq.Obj, rq.Act); !hasPolicy {
-		return fmt.Errorf("Policy不存在")
+	if hasPolicy := rp.enforcer.HasPolicy(rq.Sub, rq.Obj, rq.Act); !hasPolicy {
+		return fmt.Errorf("policy not found")
 	}
-	if ok, err := rp.enforcer.RemovePolicy(rq.User, rq.Domain, rq.Obj, rq.Act); !ok {
+	if ok, err := rp.enforcer.RemovePolicy(rq.Sub, rq.Obj, rq.Act); !ok {
 		return err
 	} else {
 		return nil
 	}
 }
 
-// add usr groups
-func (rp *rbacpolicy) AddGroup(ctx context.Context, rq *v1.AddGroupRequest) error {
-
-	if hasPolicy := rp.enforcer.HasGroupingPolicy(rq.User, rq.Group, rq.Domain); hasPolicy {
-		return fmt.Errorf("用户已添加到该group")
+// add user to role
+func (rp *rbacpolicy) AddSubGroup(ctx context.Context, rq *v1.AddSubGroupRequest) error {
+	if hasPolicy := rp.enforcer.HasNamedGroupingPolicy("g", rq.Sub, rq.Group); hasPolicy {
+		return fmt.Errorf("user: %s already belong to the group: %s", rq.Sub, rq.Group)
 	}
-	if ok, err := rp.enforcer.AddGroupingPolicy(rq.User, rq.Group, rq.Domain); !ok {
+	if ok, err := rp.enforcer.AddNamedGroupingPolicy("g", rq.Sub, rq.Group); !ok {
 		return err
 	} else {
 		return nil
 	}
 }
 
-// TODO: add resource group , 比如所有按站点区分店铺， （metabase目前的问题是没资源组， 我需要对所有资源一一进行赋值） 资源组别的命名, 例如: shop_allshops(这个最好在一开始的时候init一下), group
+// resource group
+func (rp *rbacpolicy) AddObjGroup(ctx context.Context, rq *v1.AddObjGroupRequest) error {
+	if hasPolicy := rp.enforcer.HasNamedGroupingPolicy("g2", rq.Obj, rq.Group); hasPolicy {
+		return fmt.Errorf("resource:%s  alread belong to the group: %s", rq.Obj, rq.Group)
+	}
+	if ok, err := rp.enforcer.AddNamedGroupingPolicy("g2", rq.Obj, rq.Group); !ok {
+		return err
+	} else {
+		return nil
+	}
+}
 
 func (rp *rbacpolicy) FilterAllowed(ctx context.Context, rq *v1.FilterAllowedRequest) (*AlloweResource, error) {
 	filtered := make([]string, 0, 16)
 
 	for _, obj := range rq.ResourceList {
-		if isAllowed, err := rp.enforcer.Enforce(rq.User, rq.Domain, obj, rq.Act); err != nil {
+		if isAllowed, err := rp.enforcer.Enforce(rq.Sub, obj, rq.Act); err != nil {
 			return nil, err
 		} else {
 			if isAllowed {
