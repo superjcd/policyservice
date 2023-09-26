@@ -23,7 +23,7 @@ type Server struct {
 // NewServer New service grpc server
 func NewServer(conf *config.Config, client v1.PolicyServiceClient) (v1.PolicyServiceServer, error) {
 	_DB = database.MustPreParePostgresqlDb(&conf.Pg)
-	policy, err := policy.NewRbacPolicy(_DB)
+	policy, err := policy.NewRbacPolicy(_DB, "superadmin") // 后面可以考虑把这个值写入配置项
 
 	if err != nil {
 		return nil, err

@@ -32,7 +32,7 @@ func (suite *FakePolicyTestSuite) SetupSuite() {
 	db, err2 = gorm.Open(sqlite.Open(dbFile), &gorm.Config{})
 	assert.Nil(suite.T(), err2)
 
-	rbac_policy, err3 := NewRbacPolicy(db)
+	rbac_policy, err3 := NewRbacPolicy(db, "superadmin")
 	assert.Nil(suite.T(), err3)
 	suite.FakePolicy = rbac_policy
 }

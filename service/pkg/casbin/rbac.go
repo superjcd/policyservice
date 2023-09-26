@@ -85,11 +85,11 @@ var (
 	e = some(where (p.eft == allow))
 	
 	[matchers]
-	m = g(r.sub, p.sub, r.dom) && r.dom == p.dom && r.obj == p.obj && r.act == p.act
+	m = g(r.sub, p.sub, r.dom) && r.dom == p.dom && r.obj == p.obj && r.act == p.act || r.sub=="%s"
 	`
-)
+) // 注意， superadmin会拥有所有权限
 
-func NewRbacPolicy(db *gorm.DB) (Policy, error) {
+func NewRbacPolicy(db *gorm.DB, superadmin string) (Policy, error) {
 	var enforcer *casbin.Enforcer
 	var err error
 
@@ -98,7 +98,8 @@ func NewRbacPolicy(db *gorm.DB) (Policy, error) {
 	}
 
 	once.Do(func() {
-		adapter, _ := gormadapter.NewAdapterByDB(db) // 这个会在数据库中创建一张表, 默认casbin_rule
+		adapter, _ := gormadapter.NewAdapterByDB(db) // This will create a table caller casbin-rule
+		rbac_model := fmt.Sprintf(rbac_model, superadmin)
 		m, _ := model.NewModelFromString(rbac_model)
 		enforcer, err = casbin.NewEnforcer(m, adapter)
 		rbac_policy = &policy{enforcer: enforcer}
@@ -122,6 +123,7 @@ func (rp *rbacpolicy) Create(ctx context.Context, rq *v1.CreatePolicyRequest) er
 
 }
 
+// list用户不同资源组别的
 func (rp *rbacpolicy) List(ctx context.Context, rq *v1.ListPolicyRequest) (*RbacPolicyList, error) {
 	var result RbacPolicyList
 	policies := rp.enforcer.GetPolicy()
@@ -154,6 +156,7 @@ func (rp *rbacpolicy) Delete(ctx context.Context, rq *v1.DeletePolicyRequest) er
 	}
 }
 
+// add usr groups
 func (rp *rbacpolicy) AddGroup(ctx context.Context, rq *v1.AddGroupRequest) error {
 
 	if hasPolicy := rp.enforcer.HasGroupingPolicy(rq.User, rq.Group, rq.Domain); hasPolicy {
@@ -165,6 +168,8 @@ func (rp *rbacpolicy) AddGroup(ctx context.Context, rq *v1.AddGroupRequest) erro
 		return nil
 	}
 }
+
+// TODO: add resource group , 比如所有按站点区分店铺， （metabase目前的问题是没资源组， 我需要对所有资源一一进行赋值） 资源组别的命名, 例如: shop_allshops(这个最好在一开始的时候init一下), group
 
 func (rp *rbacpolicy) FilterAllowed(ctx context.Context, rq *v1.FilterAllowedRequest) (*AlloweResource, error) {
 	filtered := make([]string, 0, 16)
