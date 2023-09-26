@@ -12,7 +12,9 @@ service PolicyService {
     rpc ListPolicy(ListPolicyRequest) returns (ListPolicyResponse);
     rpc DeletePolicy(DeletePolicyRequest) returns (DeletePolicyResponse);
     rpc AddSubGroup(AddSubGroupRequest) returns (AddSubGroupResponse);
+    rpc RemoveSubGroup(RemoveSubGroupRequest) returns (RemoveSubGroupResponse);
     rpc AddObjGroup(AddObjGroupRequest) returns (AddObjGroupResponse);
+    rpc RemoveObjGroup(RemoveObjGroupRequest) returns (RemoveObjGroupResponse);
     rpc FilterAllowed(FilterAllowedRequest) returns (FilterAllowedResponse);
 }
 
@@ -69,12 +71,33 @@ message AddSubGroupResponse {
     Status status=2;
 }
 
+message RemoveSubGroupRequest {
+    string sub=1;
+    string group=2;
+}
+
+message RemoveSubGroupResponse {
+    string msg=1;
+    Status status=2;
+}
+
 message AddObjGroupRequest {
     string obj=1;
     string group=2;
 }
 
 message AddObjGroupResponse {
+    string msg=1;
+    Status status=2;
+}
+
+
+message RemoveObjGroupRequest {
+    string obj=1;
+    string group=2;
+}
+
+message RemoveObjGroupResponse {
     string msg=1;
     Status status=2;
 }

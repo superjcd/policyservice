@@ -15,6 +15,8 @@ type RbacPolicy interface {
 	List(_ context.Context, _ *v1.ListPolicyRequest) (*RbacPolicyList, error)
 	Delete(_ context.Context, _ *v1.DeletePolicyRequest) error
 	AddSubGroup(_ context.Context, _ *v1.AddSubGroupRequest) error
+	RemoveSubGroup(_ context.Context, _ *v1.RemoveSubGroupRequest) error
 	AddObjGroup(_ context.Context, _ *v1.AddObjGroupRequest) error
+	RemoveObjGroup(_ context.Context, _ *v1.RemoveObjGroupRequest) error
 	FilterAllowed(_ context.Context, _ *v1.FilterAllowedRequest) (*AlloweResource, error)
 }

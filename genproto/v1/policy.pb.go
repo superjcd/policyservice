@@ -576,6 +576,116 @@ func (x *AddSubGroupResponse) GetStatus() Status {
 	return Status_success
 }
 
+type RemoveSubGroupRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Sub   string `protobuf:"bytes,1,opt,name=sub,proto3" json:"sub,omitempty"`
+	Group string `protobuf:"bytes,2,opt,name=group,proto3" json:"group,omitempty"`
+}
+
+func (x *RemoveSubGroupRequest) Reset() {
+	*x = RemoveSubGroupRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_policy_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RemoveSubGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveSubGroupRequest) ProtoMessage() {}
+
+func (x *RemoveSubGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_policy_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveSubGroupRequest.ProtoReflect.Descriptor instead.
+func (*RemoveSubGroupRequest) Descriptor() ([]byte, []int) {
+	return file_policy_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *RemoveSubGroupRequest) GetSub() string {
+	if x != nil {
+		return x.Sub
+	}
+	return ""
+}
+
+func (x *RemoveSubGroupRequest) GetGroup() string {
+	if x != nil {
+		return x.Group
+	}
+	return ""
+}
+
+type RemoveSubGroupResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Msg    string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty"`
+	Status Status `protobuf:"varint,2,opt,name=status,proto3,enum=superjcd.policyservice.v1.Status" json:"status,omitempty"`
+}
+
+func (x *RemoveSubGroupResponse) Reset() {
+	*x = RemoveSubGroupResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_policy_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RemoveSubGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveSubGroupResponse) ProtoMessage() {}
+
+func (x *RemoveSubGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_policy_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveSubGroupResponse.ProtoReflect.Descriptor instead.
+func (*RemoveSubGroupResponse) Descriptor() ([]byte, []int) {
+	return file_policy_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *RemoveSubGroupResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *RemoveSubGroupResponse) GetStatus() Status {
+	if x != nil {
+		return x.Status
+	}
+	return Status_success
+}
+
 type AddObjGroupRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -588,7 +698,7 @@ type AddObjGroupRequest struct {
 func (x *AddObjGroupRequest) Reset() {
 	*x = AddObjGroupRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_policy_proto_msgTypes[9]
+		mi := &file_policy_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -601,7 +711,7 @@ func (x *AddObjGroupRequest) String() string {
 func (*AddObjGroupRequest) ProtoMessage() {}
 
 func (x *AddObjGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_policy_proto_msgTypes[9]
+	mi := &file_policy_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -614,7 +724,7 @@ func (x *AddObjGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddObjGroupRequest.ProtoReflect.Descriptor instead.
 func (*AddObjGroupRequest) Descriptor() ([]byte, []int) {
-	return file_policy_proto_rawDescGZIP(), []int{9}
+	return file_policy_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AddObjGroupRequest) GetObj() string {
@@ -643,7 +753,7 @@ type AddObjGroupResponse struct {
 func (x *AddObjGroupResponse) Reset() {
 	*x = AddObjGroupResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_policy_proto_msgTypes[10]
+		mi := &file_policy_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -656,7 +766,7 @@ func (x *AddObjGroupResponse) String() string {
 func (*AddObjGroupResponse) ProtoMessage() {}
 
 func (x *AddObjGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_policy_proto_msgTypes[10]
+	mi := &file_policy_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -669,7 +779,7 @@ func (x *AddObjGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddObjGroupResponse.ProtoReflect.Descriptor instead.
 func (*AddObjGroupResponse) Descriptor() ([]byte, []int) {
-	return file_policy_proto_rawDescGZIP(), []int{10}
+	return file_policy_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *AddObjGroupResponse) GetMsg() string {
@@ -680,6 +790,116 @@ func (x *AddObjGroupResponse) GetMsg() string {
 }
 
 func (x *AddObjGroupResponse) GetStatus() Status {
+	if x != nil {
+		return x.Status
+	}
+	return Status_success
+}
+
+type RemoveObjGroupRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Obj   string `protobuf:"bytes,1,opt,name=obj,proto3" json:"obj,omitempty"`
+	Group string `protobuf:"bytes,2,opt,name=group,proto3" json:"group,omitempty"`
+}
+
+func (x *RemoveObjGroupRequest) Reset() {
+	*x = RemoveObjGroupRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_policy_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RemoveObjGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveObjGroupRequest) ProtoMessage() {}
+
+func (x *RemoveObjGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_policy_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveObjGroupRequest.ProtoReflect.Descriptor instead.
+func (*RemoveObjGroupRequest) Descriptor() ([]byte, []int) {
+	return file_policy_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *RemoveObjGroupRequest) GetObj() string {
+	if x != nil {
+		return x.Obj
+	}
+	return ""
+}
+
+func (x *RemoveObjGroupRequest) GetGroup() string {
+	if x != nil {
+		return x.Group
+	}
+	return ""
+}
+
+type RemoveObjGroupResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Msg    string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty"`
+	Status Status `protobuf:"varint,2,opt,name=status,proto3,enum=superjcd.policyservice.v1.Status" json:"status,omitempty"`
+}
+
+func (x *RemoveObjGroupResponse) Reset() {
+	*x = RemoveObjGroupResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_policy_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RemoveObjGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveObjGroupResponse) ProtoMessage() {}
+
+func (x *RemoveObjGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_policy_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveObjGroupResponse.ProtoReflect.Descriptor instead.
+func (*RemoveObjGroupResponse) Descriptor() ([]byte, []int) {
+	return file_policy_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *RemoveObjGroupResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *RemoveObjGroupResponse) GetStatus() Status {
 	if x != nil {
 		return x.Status
 	}
@@ -699,7 +919,7 @@ type FilterAllowedRequest struct {
 func (x *FilterAllowedRequest) Reset() {
 	*x = FilterAllowedRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_policy_proto_msgTypes[11]
+		mi := &file_policy_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -712,7 +932,7 @@ func (x *FilterAllowedRequest) String() string {
 func (*FilterAllowedRequest) ProtoMessage() {}
 
 func (x *FilterAllowedRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_policy_proto_msgTypes[11]
+	mi := &file_policy_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -725,7 +945,7 @@ func (x *FilterAllowedRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterAllowedRequest.ProtoReflect.Descriptor instead.
 func (*FilterAllowedRequest) Descriptor() ([]byte, []int) {
-	return file_policy_proto_rawDescGZIP(), []int{11}
+	return file_policy_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *FilterAllowedRequest) GetResourceList() []string {
@@ -762,7 +982,7 @@ type FilterAllowedResponse struct {
 func (x *FilterAllowedResponse) Reset() {
 	*x = FilterAllowedResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_policy_proto_msgTypes[12]
+		mi := &file_policy_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -775,7 +995,7 @@ func (x *FilterAllowedResponse) String() string {
 func (*FilterAllowedResponse) ProtoMessage() {}
 
 func (x *FilterAllowedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_policy_proto_msgTypes[12]
+	mi := &file_policy_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -788,7 +1008,7 @@ func (x *FilterAllowedResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterAllowedResponse.ProtoReflect.Descriptor instead.
 func (*FilterAllowedResponse) Descriptor() ([]byte, []int) {
-	return file_policy_proto_rawDescGZIP(), []int{12}
+	return file_policy_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *FilterAllowedResponse) GetMsg() string {
@@ -865,11 +1085,32 @@ var file_policy_proto_rawDesc = []byte{
 	0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x21, 0x2e, 0x73,
 	0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65,
 	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52,
-	0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x3c, 0x0a, 0x12, 0x41, 0x64, 0x64, 0x4f, 0x62,
-	0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a,
-	0x03, 0x6f, 0x62, 0x6a, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6f, 0x62, 0x6a, 0x12,
-	0x14, 0x0a, 0x05, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
-	0x67, 0x72, 0x6f, 0x75, 0x70, 0x22, 0x62, 0x0a, 0x13, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a, 0x47,
+	0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x3f, 0x0a, 0x15, 0x52, 0x65, 0x6d, 0x6f, 0x76,
+	0x65, 0x53, 0x75, 0x62, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x10, 0x0a, 0x03, 0x73, 0x75, 0x62, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x73,
+	0x75, 0x62, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x22, 0x65, 0x0a, 0x16, 0x52, 0x65, 0x6d, 0x6f,
+	0x76, 0x65, 0x53, 0x75, 0x62, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x6d, 0x73, 0x67, 0x12, 0x39, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x0e, 0x32, 0x21, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e,
+	0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x31,
+	0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22,
+	0x3c, 0x0a, 0x12, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6f, 0x62, 0x6a, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x03, 0x6f, 0x62, 0x6a, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x6f, 0x75, 0x70,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x22, 0x62, 0x0a,
+	0x13, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x03, 0x6d, 0x73, 0x67, 0x12, 0x39, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x21, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63,
+	0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x76, 0x31, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75,
+	0x73, 0x22, 0x3f, 0x0a, 0x15, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x4f, 0x62, 0x6a, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6f, 0x62,
+	0x6a, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6f, 0x62, 0x6a, 0x12, 0x14, 0x0a, 0x05,
+	0x67, 0x72, 0x6f, 0x75, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x67, 0x72, 0x6f,
+	0x75, 0x70, 0x22, 0x65, 0x0a, 0x16, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x4f, 0x62, 0x6a, 0x47,
 	0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03,
 	0x6d, 0x73, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6d, 0x73, 0x67, 0x12, 0x39,
 	0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x21,
@@ -893,7 +1134,7 @@ var file_policy_proto_rawDesc = []byte{
 	0x52, 0x13, 0x61, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63,
 	0x65, 0x4c, 0x69, 0x73, 0x74, 0x2a, 0x22, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12,
 	0x0b, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07,
-	0x66, 0x61, 0x69, 0x6c, 0x75, 0x72, 0x65, 0x10, 0x01, 0x32, 0xac, 0x05, 0x0a, 0x0d, 0x50, 0x6f,
+	0x66, 0x61, 0x69, 0x6c, 0x75, 0x72, 0x65, 0x10, 0x01, 0x32, 0x9a, 0x07, 0x0a, 0x0d, 0x50, 0x6f,
 	0x6c, 0x69, 0x63, 0x79, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x6f, 0x0a, 0x0c, 0x43,
 	0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x12, 0x2e, 0x2e, 0x73, 0x75,
 	0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72,
@@ -922,25 +1163,39 @@ var file_policy_proto_rawDesc = []byte{
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63,
 	0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
 	0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x53, 0x75, 0x62, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x6c, 0x0a, 0x0b, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x2d, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64,
-	0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76,
-	0x31, 0x2e, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x75, 0x0a, 0x0e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65,
+	0x53, 0x75, 0x62, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x30, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72,
+	0x6a, 0x63, 0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x53, 0x75, 0x62, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x31, 0x2e, 0x73, 0x75, 0x70,
+	0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x53, 0x75, 0x62,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x6c, 0x0a,
+	0x0b, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x2d, 0x2e, 0x73,
+	0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x73, 0x75,
+	0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x75, 0x0a, 0x0e, 0x52,
+	0x65, 0x6d, 0x6f, 0x76, 0x65, 0x4f, 0x62, 0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x30, 0x2e,
+	0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65,
+	0x4f, 0x62, 0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x31, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63,
+	0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x6d, 0x6f,
+	0x76, 0x65, 0x4f, 0x62, 0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x72, 0x0a, 0x0d, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x41, 0x6c, 0x6c, 0x6f,
+	0x77, 0x65, 0x64, 0x12, 0x2f, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e, 0x70,
+	0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x31, 0x2e,
+	0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x41, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x30, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2e,
 	0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x64, 0x64, 0x4f, 0x62, 0x6a, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x72, 0x0a, 0x0d, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x41, 0x6c,
-	0x6c, 0x6f, 0x77, 0x65, 0x64, 0x12, 0x2f, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64,
-	0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76,
-	0x31, 0x2e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x41, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x30, 0x2e, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63,
-	0x64, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
-	0x76, 0x31, 0x2e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x41, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x2f, 0x5a, 0x2d, 0x67, 0x69, 0x74, 0x68,
-	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2f,
-	0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x67, 0x65,
-	0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x2e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x41, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x2f, 0x5a, 0x2d, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x70, 0x65, 0x72, 0x6a, 0x63, 0x64, 0x2f, 0x70, 0x6f,
+	0x6c, 0x69, 0x63, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x67, 0x65, 0x6e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -956,22 +1211,26 @@ func file_policy_proto_rawDescGZIP() []byte {
 }
 
 var file_policy_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_policy_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_policy_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_policy_proto_goTypes = []interface{}{
-	(Status)(0),                   // 0: superjcd.policyservice.v1.Status
-	(*Policy)(nil),                // 1: superjcd.policyservice.v1.Policy
-	(*CreatePolicyRequest)(nil),   // 2: superjcd.policyservice.v1.CreatePolicyRequest
-	(*CreatePolicyResponse)(nil),  // 3: superjcd.policyservice.v1.CreatePolicyResponse
-	(*ListPolicyRequest)(nil),     // 4: superjcd.policyservice.v1.ListPolicyRequest
-	(*ListPolicyResponse)(nil),    // 5: superjcd.policyservice.v1.ListPolicyResponse
-	(*DeletePolicyRequest)(nil),   // 6: superjcd.policyservice.v1.DeletePolicyRequest
-	(*DeletePolicyResponse)(nil),  // 7: superjcd.policyservice.v1.DeletePolicyResponse
-	(*AddSubGroupRequest)(nil),    // 8: superjcd.policyservice.v1.AddSubGroupRequest
-	(*AddSubGroupResponse)(nil),   // 9: superjcd.policyservice.v1.AddSubGroupResponse
-	(*AddObjGroupRequest)(nil),    // 10: superjcd.policyservice.v1.AddObjGroupRequest
-	(*AddObjGroupResponse)(nil),   // 11: superjcd.policyservice.v1.AddObjGroupResponse
-	(*FilterAllowedRequest)(nil),  // 12: superjcd.policyservice.v1.FilterAllowedRequest
-	(*FilterAllowedResponse)(nil), // 13: superjcd.policyservice.v1.FilterAllowedResponse
+	(Status)(0),                    // 0: superjcd.policyservice.v1.Status
+	(*Policy)(nil),                 // 1: superjcd.policyservice.v1.Policy
+	(*CreatePolicyRequest)(nil),    // 2: superjcd.policyservice.v1.CreatePolicyRequest
+	(*CreatePolicyResponse)(nil),   // 3: superjcd.policyservice.v1.CreatePolicyResponse
+	(*ListPolicyRequest)(nil),      // 4: superjcd.policyservice.v1.ListPolicyRequest
+	(*ListPolicyResponse)(nil),     // 5: superjcd.policyservice.v1.ListPolicyResponse
+	(*DeletePolicyRequest)(nil),    // 6: superjcd.policyservice.v1.DeletePolicyRequest
+	(*DeletePolicyResponse)(nil),   // 7: superjcd.policyservice.v1.DeletePolicyResponse
+	(*AddSubGroupRequest)(nil),     // 8: superjcd.policyservice.v1.AddSubGroupRequest
+	(*AddSubGroupResponse)(nil),    // 9: superjcd.policyservice.v1.AddSubGroupResponse
+	(*RemoveSubGroupRequest)(nil),  // 10: superjcd.policyservice.v1.RemoveSubGroupRequest
+	(*RemoveSubGroupResponse)(nil), // 11: superjcd.policyservice.v1.RemoveSubGroupResponse
+	(*AddObjGroupRequest)(nil),     // 12: superjcd.policyservice.v1.AddObjGroupRequest
+	(*AddObjGroupResponse)(nil),    // 13: superjcd.policyservice.v1.AddObjGroupResponse
+	(*RemoveObjGroupRequest)(nil),  // 14: superjcd.policyservice.v1.RemoveObjGroupRequest
+	(*RemoveObjGroupResponse)(nil), // 15: superjcd.policyservice.v1.RemoveObjGroupResponse
+	(*FilterAllowedRequest)(nil),   // 16: superjcd.policyservice.v1.FilterAllowedRequest
+	(*FilterAllowedResponse)(nil),  // 17: superjcd.policyservice.v1.FilterAllowedResponse
 }
 var file_policy_proto_depIdxs = []int32{
 	0,  // 0: superjcd.policyservice.v1.CreatePolicyResponse.status:type_name -> superjcd.policyservice.v1.Status
@@ -979,25 +1238,31 @@ var file_policy_proto_depIdxs = []int32{
 	1,  // 2: superjcd.policyservice.v1.ListPolicyResponse.policies:type_name -> superjcd.policyservice.v1.Policy
 	0,  // 3: superjcd.policyservice.v1.DeletePolicyResponse.status:type_name -> superjcd.policyservice.v1.Status
 	0,  // 4: superjcd.policyservice.v1.AddSubGroupResponse.status:type_name -> superjcd.policyservice.v1.Status
-	0,  // 5: superjcd.policyservice.v1.AddObjGroupResponse.status:type_name -> superjcd.policyservice.v1.Status
-	0,  // 6: superjcd.policyservice.v1.FilterAllowedResponse.status:type_name -> superjcd.policyservice.v1.Status
-	2,  // 7: superjcd.policyservice.v1.PolicyService.CreatePolicy:input_type -> superjcd.policyservice.v1.CreatePolicyRequest
-	4,  // 8: superjcd.policyservice.v1.PolicyService.ListPolicy:input_type -> superjcd.policyservice.v1.ListPolicyRequest
-	6,  // 9: superjcd.policyservice.v1.PolicyService.DeletePolicy:input_type -> superjcd.policyservice.v1.DeletePolicyRequest
-	8,  // 10: superjcd.policyservice.v1.PolicyService.AddSubGroup:input_type -> superjcd.policyservice.v1.AddSubGroupRequest
-	10, // 11: superjcd.policyservice.v1.PolicyService.AddObjGroup:input_type -> superjcd.policyservice.v1.AddObjGroupRequest
-	12, // 12: superjcd.policyservice.v1.PolicyService.FilterAllowed:input_type -> superjcd.policyservice.v1.FilterAllowedRequest
-	3,  // 13: superjcd.policyservice.v1.PolicyService.CreatePolicy:output_type -> superjcd.policyservice.v1.CreatePolicyResponse
-	5,  // 14: superjcd.policyservice.v1.PolicyService.ListPolicy:output_type -> superjcd.policyservice.v1.ListPolicyResponse
-	7,  // 15: superjcd.policyservice.v1.PolicyService.DeletePolicy:output_type -> superjcd.policyservice.v1.DeletePolicyResponse
-	9,  // 16: superjcd.policyservice.v1.PolicyService.AddSubGroup:output_type -> superjcd.policyservice.v1.AddSubGroupResponse
-	11, // 17: superjcd.policyservice.v1.PolicyService.AddObjGroup:output_type -> superjcd.policyservice.v1.AddObjGroupResponse
-	13, // 18: superjcd.policyservice.v1.PolicyService.FilterAllowed:output_type -> superjcd.policyservice.v1.FilterAllowedResponse
-	13, // [13:19] is the sub-list for method output_type
-	7,  // [7:13] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	0,  // 5: superjcd.policyservice.v1.RemoveSubGroupResponse.status:type_name -> superjcd.policyservice.v1.Status
+	0,  // 6: superjcd.policyservice.v1.AddObjGroupResponse.status:type_name -> superjcd.policyservice.v1.Status
+	0,  // 7: superjcd.policyservice.v1.RemoveObjGroupResponse.status:type_name -> superjcd.policyservice.v1.Status
+	0,  // 8: superjcd.policyservice.v1.FilterAllowedResponse.status:type_name -> superjcd.policyservice.v1.Status
+	2,  // 9: superjcd.policyservice.v1.PolicyService.CreatePolicy:input_type -> superjcd.policyservice.v1.CreatePolicyRequest
+	4,  // 10: superjcd.policyservice.v1.PolicyService.ListPolicy:input_type -> superjcd.policyservice.v1.ListPolicyRequest
+	6,  // 11: superjcd.policyservice.v1.PolicyService.DeletePolicy:input_type -> superjcd.policyservice.v1.DeletePolicyRequest
+	8,  // 12: superjcd.policyservice.v1.PolicyService.AddSubGroup:input_type -> superjcd.policyservice.v1.AddSubGroupRequest
+	10, // 13: superjcd.policyservice.v1.PolicyService.RemoveSubGroup:input_type -> superjcd.policyservice.v1.RemoveSubGroupRequest
+	12, // 14: superjcd.policyservice.v1.PolicyService.AddObjGroup:input_type -> superjcd.policyservice.v1.AddObjGroupRequest
+	14, // 15: superjcd.policyservice.v1.PolicyService.RemoveObjGroup:input_type -> superjcd.policyservice.v1.RemoveObjGroupRequest
+	16, // 16: superjcd.policyservice.v1.PolicyService.FilterAllowed:input_type -> superjcd.policyservice.v1.FilterAllowedRequest
+	3,  // 17: superjcd.policyservice.v1.PolicyService.CreatePolicy:output_type -> superjcd.policyservice.v1.CreatePolicyResponse
+	5,  // 18: superjcd.policyservice.v1.PolicyService.ListPolicy:output_type -> superjcd.policyservice.v1.ListPolicyResponse
+	7,  // 19: superjcd.policyservice.v1.PolicyService.DeletePolicy:output_type -> superjcd.policyservice.v1.DeletePolicyResponse
+	9,  // 20: superjcd.policyservice.v1.PolicyService.AddSubGroup:output_type -> superjcd.policyservice.v1.AddSubGroupResponse
+	11, // 21: superjcd.policyservice.v1.PolicyService.RemoveSubGroup:output_type -> superjcd.policyservice.v1.RemoveSubGroupResponse
+	13, // 22: superjcd.policyservice.v1.PolicyService.AddObjGroup:output_type -> superjcd.policyservice.v1.AddObjGroupResponse
+	15, // 23: superjcd.policyservice.v1.PolicyService.RemoveObjGroup:output_type -> superjcd.policyservice.v1.RemoveObjGroupResponse
+	17, // 24: superjcd.policyservice.v1.PolicyService.FilterAllowed:output_type -> superjcd.policyservice.v1.FilterAllowedResponse
+	17, // [17:25] is the sub-list for method output_type
+	9,  // [9:17] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_policy_proto_init() }
@@ -1115,7 +1380,7 @@ func file_policy_proto_init() {
 			}
 		}
 		file_policy_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddObjGroupRequest); i {
+			switch v := v.(*RemoveSubGroupRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1127,7 +1392,7 @@ func file_policy_proto_init() {
 			}
 		}
 		file_policy_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddObjGroupResponse); i {
+			switch v := v.(*RemoveSubGroupResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1139,7 +1404,7 @@ func file_policy_proto_init() {
 			}
 		}
 		file_policy_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FilterAllowedRequest); i {
+			switch v := v.(*AddObjGroupRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1151,6 +1416,54 @@ func file_policy_proto_init() {
 			}
 		}
 		file_policy_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddObjGroupResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_policy_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveObjGroupRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_policy_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveObjGroupResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_policy_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FilterAllowedRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_policy_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*FilterAllowedResponse); i {
 			case 0:
 				return &v.state
@@ -1169,7 +1482,7 @@ func file_policy_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_policy_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   13,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

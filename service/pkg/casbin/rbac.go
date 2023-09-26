@@ -164,6 +164,19 @@ func (rp *rbacpolicy) AddSubGroup(ctx context.Context, rq *v1.AddSubGroupRequest
 	} else {
 		return nil
 	}
+
+}
+
+func (rp *rbacpolicy) RemoveSubGroup(ctx context.Context, rq *v1.RemoveSubGroupRequest) error {
+	if hasPolicy := rp.enforcer.HasNamedGroupingPolicy("g", rq.Sub, rq.Group); !hasPolicy {
+		return fmt.Errorf("user: %s not belongs to the group: %s", rq.Sub, rq.Group)
+	}
+	if ok, err := rp.enforcer.RemoveNamedGroupingPolicy("g", rq.Sub, rq.Group); !ok {
+		return err
+	} else {
+		return nil
+	}
+
 }
 
 // resource group
@@ -172,6 +185,17 @@ func (rp *rbacpolicy) AddObjGroup(ctx context.Context, rq *v1.AddObjGroupRequest
 		return fmt.Errorf("resource:%s  alread belong to the group: %s", rq.Obj, rq.Group)
 	}
 	if ok, err := rp.enforcer.AddNamedGroupingPolicy("g2", rq.Obj, rq.Group); !ok {
+		return err
+	} else {
+		return nil
+	}
+}
+
+func (rp *rbacpolicy) RemoveObjGroup(ctx context.Context, rq *v1.RemoveObjGroupRequest) error {
+	if hasPolicy := rp.enforcer.HasNamedGroupingPolicy("g2", rq.Obj, rq.Group); !hasPolicy {
+		return fmt.Errorf("resource:%s  not belong to the group: %s", rq.Obj, rq.Group)
+	}
+	if ok, err := rp.enforcer.RemoveNamedGroupingPolicy("g2", rq.Obj, rq.Group); !ok {
 		return err
 	} else {
 		return nil
