@@ -221,3 +221,7 @@ func (rp *rbacpolicy) FilterAllowed(ctx context.Context, rq *v1.FilterAllowedReq
 	}, nil
 
 }
+
+func (rp *rbacpolicy) Enforcer() *casbin.Enforcer {
+	return rp.enforcer
+}

@@ -3,6 +3,7 @@ package casbin
 import (
 	"context"
 
+	casbin "github.com/casbin/casbin/v2"
 	v1 "github.com/superjcd/policyservice/genproto/v1"
 )
 
@@ -19,4 +20,5 @@ type RbacPolicy interface {
 	AddObjGroup(_ context.Context, _ *v1.AddObjGroupRequest) error
 	RemoveObjGroup(_ context.Context, _ *v1.RemoveObjGroupRequest) error
 	FilterAllowed(_ context.Context, _ *v1.FilterAllowedRequest) (*AlloweResource, error)
+	Enforcer() *casbin.Enforcer
 }
