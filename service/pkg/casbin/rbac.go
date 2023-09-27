@@ -131,8 +131,8 @@ func (rp *rbacpolicy) List(ctx context.Context, rq *v1.ListPolicyRequest) (*Rbac
 	for _, pol := range policies {
 		item := RbacPolicyItem{
 			Sub: pol[0],
-			Obj: pol[2],
-			Act: pol[3],
+			Obj: pol[1],
+			Act: pol[2],
 		}
 
 		items = append(items, &item)
