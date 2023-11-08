@@ -38,12 +38,12 @@ func (suite *FakePolicyTestSuite) SetupSuite() {
 }
 
 func (suite *FakePolicyTestSuite) TearDownSuite() {
-	// _db, _ := db.DB()
-	// err := _db.Close()
-	// assert.Nil(suite.T(), err)
+	_db, _ := db.DB()
+	err := _db.Close()
+	assert.Nil(suite.T(), err)
 
-	// err2 := os.Remove(dbFile)
-	// assert.Nil(suite.T(), err2)
+	err2 := os.Remove(dbFile)
+	assert.Nil(suite.T(), err2)
 }
 
 func (suite *FakePolicyTestSuite) TestAddSubPolicyGroup() {

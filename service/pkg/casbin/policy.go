@@ -19,6 +19,6 @@ type RbacPolicy interface {
 	RemoveSubGroup(_ context.Context, _ *v1.RemoveSubGroupRequest) error
 	AddObjGroup(_ context.Context, _ *v1.AddObjGroupRequest) error
 	RemoveObjGroup(_ context.Context, _ *v1.RemoveObjGroupRequest) error
-	FilterAllowed(_ context.Context, _ *v1.FilterAllowedRequest) (*AlloweResource, error)
+	FilterAllowed(_ context.Context, _ *v1.FilterAllowedRequest) (*AlloweResourced, error)
 	Enforcer() *casbin.Enforcer
 }
