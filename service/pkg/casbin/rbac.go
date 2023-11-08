@@ -53,12 +53,12 @@ func (rpl *RbacPolicyList) ConvertToListPolicyResponse(msg string, status v1.Sta
 	}
 }
 
-type AlloweResourced struct {
+type AllowedResource struct {
 	TotalCount int      `json:"totalCount"`
 	Items      []string `json:"items`
 }
 
-func (ar *AlloweResourced) ConvertToFilterAllowedResponse(msg string, status v1.Status) v1.FilterAllowedResponse {
+func (ar *AllowedResource) ConvertToFilterAllowedResponse(msg string, status v1.Status) v1.FilterAllowedResponse {
 	return v1.FilterAllowedResponse{
 		Msg:                 msg,
 		Status:              status,
@@ -202,7 +202,7 @@ func (rp *rbacpolicy) RemoveObjGroup(ctx context.Context, rq *v1.RemoveObjGroupR
 	}
 }
 
-func (rp *rbacpolicy) FilterAllowed(ctx context.Context, rq *v1.FilterAllowedRequest) (*AlloweResourced, error) {
+func (rp *rbacpolicy) FilterAllowed(ctx context.Context, rq *v1.FilterAllowedRequest) (*AllowedResource, error) {
 	filtered := make([]string, 0, 16)
 
 	for _, obj := range rq.ResourceList {
@@ -215,7 +215,7 @@ func (rp *rbacpolicy) FilterAllowed(ctx context.Context, rq *v1.FilterAllowedReq
 		}
 	}
 
-	return &AlloweResourced{
+	return &AllowedResource{
 		TotalCount: len(filtered),
 		Items:      filtered,
 	}, nil
